@@ -33,7 +33,7 @@ A high-performance C#/.NET Windows Forms application designed for real-time hard
 * English
 * Español
 * Português
-* 한국인
+* 한국어
 * 日本語
 * Deutsch
 * Italiano
