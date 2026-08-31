@@ -1,3 +1,6 @@
+<img width="1739" height="1717" alt="1000032287" src="https://github.com/user-attachments/assets/56543ca5-2db3-4420-90e5-af260bb338bd" />
+
+
 # Cooler Speed Change & Management
 
 A high-performance C#/.NET Windows Forms application designed for real-time hardware temperature monitoring and dynamic PWM fan speed control. Powered by *LibreHardwareMonitor*, this application delivers precise hardware telemetry while maintaining zero UI freezing and extremely low CPU overhead.
