@@ -69,4 +69,4 @@ A high-performance C#/.NET Windows Forms application designed for real-time hard
 
 ## Security & Execution Level
 
-Because hardware control APIs require direct interaction with low-level kernel drivers, this application is configured to request elevated privileges
+Because hardware control APIs require direct interaction with low-level kernel drivers, this application is configured to request admin privileges.
