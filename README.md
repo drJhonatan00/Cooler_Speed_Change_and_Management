@@ -5,7 +5,7 @@
 
 A high-performance C#/.NET Windows Forms application designed for real-time hardware temperature monitoring and dynamic PWM fan speed control. Powered by *LibreHardwareMonitor*, this application delivers precise hardware telemetry while maintaining zero UI freezing and extremely low CPU overhead.
 
-<img width="829" height="343" alt="Imagem13" src="https://github.com/user-attachments/assets/e6de2690-089f-4a0a-8725-1962f831d8c8" />
+<img width="908" height="541" alt="1000040972" src="https://github.com/user-attachments/assets/0295b3fb-6c2c-4176-8ecf-46e90d49db40" />
 
 ---
 
