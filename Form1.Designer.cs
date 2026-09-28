@@ -2,40 +2,20 @@
 {
     partial class Form1
     {
-        /// <summary>
-        /// Variável de designer necessária.
-        /// </summary>
         private System.ComponentModel.IContainer components = null;
-
-        /// <summary>
-        /// Limpar os recursos que estão sendo usados.
-        /// </summary>
-        /// <param name="disposing">true se for necessário descartar os recursos gerenciados; caso contrário, false.</param>
         protected override void Dispose(bool disposing)
         {
-            if (disposing && (components != null))
-            {
-                components.Dispose();
-            }
+            if (disposing && (components != null)) components.Dispose();
             base.Dispose(disposing);
         }
 
-        #region Código gerado pelo Windows Form Designer
-
-        /// <summary>
-        /// Método necessário para suporte ao Designer - não modifique 
-        /// o conteúdo deste método com o editor de código.
-        /// </summary>
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea33 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend33 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series33 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea34 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend34 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series34 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            var areaTemp = new System.Windows.Forms.DataVisualization.Charting.ChartArea("AreaTemp");
+            var areaFan = new System.Windows.Forms.DataVisualization.Charting.ChartArea("AreaFan");
+            var seriesTemp = new System.Windows.Forms.DataVisualization.Charting.Series("Temperatura");
+            var seriesFan = new System.Windows.Forms.DataVisualization.Charting.Series("Cooler");
             this.lblTemperaturaVal = new System.Windows.Forms.Label();
             this.chartTemperatura = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.label1 = new System.Windows.Forms.Label();
@@ -48,11 +28,16 @@
             this.button1 = new System.Windows.Forms.Button();
             this.cmbDispositivos = new System.Windows.Forms.ComboBox();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.panel6 = new System.Windows.Forms.Panel();
+            this.button3 = new System.Windows.Forms.Button();
+            this.dev = new System.Windows.Forms.Label();
+            this.radioButton3 = new System.Windows.Forms.RadioButton();
+            this.radioButton2 = new System.Windows.Forms.RadioButton();
+            this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.panel5 = new System.Windows.Forms.Panel();
             this.button2 = new System.Windows.Forms.Button();
             this.label20 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
-            this.dev = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
             this.btnResetar = new System.Windows.Forms.Button();
             this.label12 = new System.Windows.Forms.Label();
@@ -62,565 +47,80 @@
             this.label16 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
             this.sliderTemperatura = new System.Windows.Forms.TrackBar();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label(); this.label3 = new System.Windows.Forms.Label(); this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label(); this.label6 = new System.Windows.Forms.Label(); this.label7 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label(); this.label9 = new System.Windows.Forms.Label(); this.label10 = new System.Windows.Forms.Label(); this.label11 = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.radioButton3 = new System.Windows.Forms.RadioButton();
-            this.button3 = new System.Windows.Forms.Button();
-            this.panel6 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.chartTemperatura)).BeginInit();
-            this.panel1.SuspendLayout();
-            this.panel2.SuspendLayout();
-            this.panel3.SuspendLayout();
-            this.panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chartCooler)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sliderTemperatura)).BeginInit();
-            this.panel6.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // lblTemperaturaVal
-            // 
-            this.lblTemperaturaVal.AutoSize = true;
-            this.lblTemperaturaVal.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTemperaturaVal.Location = new System.Drawing.Point(14, 60);
-            this.lblTemperaturaVal.Name = "lblTemperaturaVal";
-            this.lblTemperaturaVal.Size = new System.Drawing.Size(44, 18);
-            this.lblTemperaturaVal.TabIndex = 1;
-            this.lblTemperaturaVal.Text = "25ºC";
-            // 
-            // chartTemperatura
-            // 
-            this.chartTemperatura.BackColor = System.Drawing.Color.DimGray;
-            chartArea33.Name = "ChartArea1";
-            this.chartTemperatura.ChartAreas.Add(chartArea33);
-            legend33.Name = "Legend1";
-            this.chartTemperatura.Legends.Add(legend33);
-            this.chartTemperatura.Location = new System.Drawing.Point(81, 133);
-            this.chartTemperatura.Name = "chartTemperatura";
-            this.chartTemperatura.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.EarthTones;
-            series33.ChartArea = "ChartArea1";
-            series33.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.FastLine;
-            series33.Legend = "Legend1";
-            series33.Name = "Temperatura";
-            this.chartTemperatura.Series.Add(series33);
-            this.chartTemperatura.Size = new System.Drawing.Size(475, 312);
-            this.chartTemperatura.TabIndex = 2;
-            this.chartTemperatura.Text = "chart1";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(42, 12);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(33, 13);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "100%";
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(13, 24);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(182, 24);
-            this.label14.TabIndex = 16;
-            this.label14.Text = "Temperatura Atual";
-            // 
-            // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.Color.Silver;
-            this.panel1.Controls.Add(this.label14);
-            this.panel1.Controls.Add(this.lblTemperaturaVal);
-            this.panel1.Location = new System.Drawing.Point(137, 21);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(273, 106);
-            this.panel1.TabIndex = 17;
-            // 
-            // timerAtualizacao
-            // 
-            this.timerAtualizacao.Enabled = true;
-            this.timerAtualizacao.Tick += new System.EventHandler(this.TimerAtualizacao_Tick);
-            // 
-            // panel2
-            // 
-            this.panel2.BackColor = System.Drawing.Color.Silver;
-            this.panel2.Controls.Add(this.label15);
-            this.panel2.Controls.Add(this.lblRpm);
-            this.panel2.Location = new System.Drawing.Point(474, 21);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(273, 106);
-            this.panel2.TabIndex = 18;
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.Location = new System.Drawing.Point(9, 24);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(217, 24);
-            this.label15.TabIndex = 16;
-            this.label15.Text = "Velocidade Ventoinha";
-            // 
-            // lblRpm
-            // 
-            this.lblRpm.AutoSize = true;
-            this.lblRpm.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblRpm.Location = new System.Drawing.Point(12, 60);
-            this.lblRpm.Name = "lblRpm";
-            this.lblRpm.Size = new System.Drawing.Size(45, 18);
-            this.lblRpm.TabIndex = 1;
-            this.lblRpm.Text = "RPM";
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(10, 306);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(116, 43);
-            this.button1.TabIndex = 19;
-            this.button1.Text = "Testar Sensores";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // cmbDispositivos
-            // 
-            this.cmbDispositivos.FormattingEnabled = true;
-            this.cmbDispositivos.Location = new System.Drawing.Point(13, 73);
-            this.cmbDispositivos.Name = "cmbDispositivos";
-            this.cmbDispositivos.Size = new System.Drawing.Size(204, 21);
-            this.cmbDispositivos.TabIndex = 20;
-            // 
-            // panel3
-            // 
-            this.panel3.BackColor = System.Drawing.Color.Gray;
-            this.panel3.Controls.Add(this.panel6);
-            this.panel3.Controls.Add(this.radioButton3);
-            this.panel3.Controls.Add(this.radioButton2);
-            this.panel3.Controls.Add(this.radioButton1);
-            this.panel3.Controls.Add(this.panel5);
-            this.panel3.Controls.Add(this.label18);
-            this.panel3.Controls.Add(this.btnResetar);
-            this.panel3.Controls.Add(this.label12);
-            this.panel3.Controls.Add(this.xampp);
-            this.panel3.Controls.Add(this.cmbDispositivos);
-            this.panel3.Controls.Add(this.button1);
-            this.panel3.Location = new System.Drawing.Point(896, -1);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(325, 508);
-            this.panel3.TabIndex = 21;
-            this.panel3.Paint += new System.Windows.Forms.PaintEventHandler(this.panel3_Paint);
-            // 
-            // panel5
-            // 
-            this.panel5.BackColor = System.Drawing.Color.DarkGray;
-            this.panel5.Controls.Add(this.button2);
-            this.panel5.Controls.Add(this.label20);
-            this.panel5.Controls.Add(this.label19);
-            this.panel5.Location = new System.Drawing.Point(0, 204);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(325, 52);
-            this.panel5.TabIndex = 39;
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(92, 6);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(105, 41);
-            this.button2.TabIndex = 38;
-            this.button2.Text = "Mudar idioma";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
-            // label20
-            // 
-            this.label20.AutoSize = true;
-            this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label20.Location = new System.Drawing.Point(11, 28);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(63, 15);
-            this.label20.TabIndex = 37;
-            this.label20.Text = "Português";
-            // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label19.Location = new System.Drawing.Point(11, 12);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(54, 16);
-            this.label19.TabIndex = 35;
-            this.label19.Text = "Idioma";
-            this.label19.Click += new System.EventHandler(this.label19_Click);
-            // 
-            // dev
-            // 
-            this.dev.AutoSize = true;
-            this.dev.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dev.Location = new System.Drawing.Point(135, 26);
-            this.dev.Name = "dev";
-            this.dev.Size = new System.Drawing.Size(154, 13);
-            this.dev.TabIndex = 36;
-            this.dev.Text = "Desenvolvido por Dr. Jhonatan";
-            // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label18.Location = new System.Drawing.Point(16, 169);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(73, 15);
-            this.label18.TabIndex = 24;
-            this.label18.Text = "Power: 25%";
-            // 
-            // btnResetar
-            // 
-            this.btnResetar.Location = new System.Drawing.Point(13, 106);
-            this.btnResetar.Name = "btnResetar";
-            this.btnResetar.Size = new System.Drawing.Size(116, 43);
-            this.btnResetar.TabIndex = 22;
-            this.btnResetar.Text = "Devolver Controle";
-            this.btnResetar.UseVisualStyleBackColor = true;
-            this.btnResetar.Click += new System.EventHandler(this.btnResetar_Click);
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(8, 6);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(240, 25);
-            this.label12.TabIndex = 21;
-            this.label12.Text = "Configurações Gerais";
-            // 
-            // xampp
-            // 
-            this.xampp.AutoSize = true;
-            this.xampp.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.xampp.Location = new System.Drawing.Point(10, 52);
-            this.xampp.Name = "xampp";
-            this.xampp.Size = new System.Drawing.Size(59, 18);
-            this.xampp.TabIndex = 17;
-            this.xampp.Text = "Cooler";
-            // 
-            // chartCooler
-            // 
-            this.chartCooler.BackColor = System.Drawing.Color.DimGray;
-            chartArea34.Name = "ChartArea1";
-            this.chartCooler.ChartAreas.Add(chartArea34);
-            legend34.Name = "Legend1";
-            this.chartCooler.Legends.Add(legend34);
-            this.chartCooler.Location = new System.Drawing.Point(416, 133);
-            this.chartCooler.Name = "chartCooler";
-            this.chartCooler.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.EarthTones;
-            series34.ChartArea = "ChartArea1";
-            series34.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.FastLine;
-            series34.Legend = "Legend1";
-            series34.Name = "Cooler";
-            this.chartCooler.Series.Add(series34);
-            this.chartCooler.Size = new System.Drawing.Size(452, 312);
-            this.chartCooler.TabIndex = 22;
-            this.chartCooler.Text = " ";
-            this.chartCooler.Click += new System.EventHandler(this.chart1_Click);
-            // 
-            // panel4
-            // 
-            this.panel4.Location = new System.Drawing.Point(744, 130);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(124, 79);
-            this.panel4.TabIndex = 23;
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.Location = new System.Drawing.Point(203, 450);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(129, 48);
-            this.label16.TabIndex = 17;
-            this.label16.Text = "Temperatura\r\nProcessador";
-            this.label16.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label17.Location = new System.Drawing.Point(541, 448);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(116, 48);
-            this.label17.TabIndex = 24;
-            this.label17.Text = "Velocidade\r\nCooler";
-            this.label17.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // sliderTemperatura
-            // 
-            this.sliderTemperatura.Location = new System.Drawing.Point(12, 6);
-            this.sliderTemperatura.Maximum = 100;
-            this.sliderTemperatura.Name = "sliderTemperatura";
-            this.sliderTemperatura.Orientation = System.Windows.Forms.Orientation.Vertical;
-            this.sliderTemperatura.Size = new System.Drawing.Size(45, 487);
-            this.sliderTemperatura.TabIndex = 0;
-            this.sliderTemperatura.TickFrequency = 10;
-            this.sliderTemperatura.Value = 25;
-            this.sliderTemperatura.Scroll += new System.EventHandler(this.sliderTemperatura_Scroll);
-            this.sliderTemperatura.ValueChanged += new System.EventHandler(this.SliderTemperatura_ValueChanged);
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(42, 59);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(27, 13);
-            this.label2.TabIndex = 25;
-            this.label2.Text = "90%";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(42, 104);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(27, 13);
-            this.label3.TabIndex = 26;
-            this.label3.Text = "80%";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(42, 150);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(27, 13);
-            this.label4.TabIndex = 27;
-            this.label4.Text = "70%";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(42, 196);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(27, 13);
-            this.label5.TabIndex = 28;
-            this.label5.Text = "60%";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(42, 243);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(27, 13);
-            this.label6.TabIndex = 29;
-            this.label6.Text = "50%";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(42, 289);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(27, 13);
-            this.label7.TabIndex = 30;
-            this.label7.Text = "40%";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(42, 335);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(27, 13);
-            this.label8.TabIndex = 31;
-            this.label8.Text = "30%";
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-            this.label9.Location = new System.Drawing.Point(42, 381);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(30, 13);
-            this.label9.TabIndex = 32;
-            this.label9.Text = "20%";
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-            this.label10.Location = new System.Drawing.Point(42, 427);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(30, 13);
-            this.label10.TabIndex = 33;
-            this.label10.Text = "10%";
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-            this.label11.Location = new System.Drawing.Point(42, 472);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(23, 13);
-            this.label11.TabIndex = 34;
-            this.label11.Text = "0%";
-            // 
-            // timer1
-            // 
-            this.timer1.Enabled = true;
-            this.timer1.Interval = 10000;
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
-            // 
-            // radioButton1
-            // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Checked = true;
-            this.radioButton1.Location = new System.Drawing.Point(19, 276);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(36, 17);
-            this.radioButton1.TabIndex = 40;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "℃";
-            this.radioButton1.UseVisualStyleBackColor = true;
-            this.radioButton1.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
-            // 
-            // radioButton2
-            // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(76, 276);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(35, 17);
-            this.radioButton2.TabIndex = 41;
-            this.radioButton2.Text = "℉";
-            this.radioButton2.UseVisualStyleBackColor = true;
-            this.radioButton2.CheckedChanged += new System.EventHandler(this.radioButton2_CheckedChanged);
-            // 
-            // radioButton3
-            // 
-            this.radioButton3.AutoSize = true;
-            this.radioButton3.Location = new System.Drawing.Point(132, 276);
-            this.radioButton3.Name = "radioButton3";
-            this.radioButton3.Size = new System.Drawing.Size(36, 17);
-            this.radioButton3.TabIndex = 42;
-            this.radioButton3.Text = "°K";
-            this.radioButton3.UseVisualStyleBackColor = true;
-            this.radioButton3.CheckedChanged += new System.EventHandler(this.radioButton3_CheckedChanged);
-            // 
-            // button3
-            // 
-            this.button3.Location = new System.Drawing.Point(5, 10);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(123, 43);
-            this.button3.TabIndex = 43;
-            this.button3.Text = "Doar para o desenvolvedor";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
-            // 
-            // panel6
-            // 
-            this.panel6.BackColor = System.Drawing.Color.RosyBrown;
-            this.panel6.Controls.Add(this.button3);
-            this.panel6.Controls.Add(this.dev);
-            this.panel6.Location = new System.Drawing.Point(0, 450);
-            this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(325, 57);
-            this.panel6.TabIndex = 44;
-            // 
-            // Form1
-            // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.DimGray;
-            this.ClientSize = new System.Drawing.Size(1214, 505);
-            this.Controls.Add(this.label11);
-            this.Controls.Add(this.label10);
-            this.Controls.Add(this.label9);
-            this.Controls.Add(this.label8);
-            this.Controls.Add(this.label7);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label17);
-            this.Controls.Add(this.label16);
-            this.Controls.Add(this.panel4);
-            this.Controls.Add(this.chartCooler);
-            this.Controls.Add(this.panel3);
-            this.Controls.Add(this.panel2);
-            this.Controls.Add(this.panel1);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.chartTemperatura);
-            this.Controls.Add(this.sliderTemperatura);
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "Form1";
-            this.Text = "Cooler Management";
-            this.Load += new System.EventHandler(this.Form1_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.chartTemperatura)).EndInit();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
-            this.panel3.ResumeLayout(false);
-            this.panel3.PerformLayout();
-            this.panel5.ResumeLayout(false);
-            this.panel5.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.chartCooler)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sliderTemperatura)).EndInit();
-            this.panel6.ResumeLayout(false);
-            this.panel6.PerformLayout();
-            this.ResumeLayout(false);
-            this.PerformLayout();
 
+            var bg = System.Drawing.Color.FromArgb(15, 23, 42);
+            var surface = System.Drawing.Color.FromArgb(30, 41, 59);
+            var surface2 = System.Drawing.Color.FromArgb(36, 50, 73);
+            var accent = System.Drawing.Color.FromArgb(56, 189, 248);
+            var text = System.Drawing.Color.FromArgb(226, 232, 240);
+            var muted = System.Drawing.Color.FromArgb(148, 163, 184);
+            var font = new System.Drawing.Font("Segoe UI", 10F);
+            var title = new System.Drawing.Font("Segoe UI Semibold", 11F);
+
+            this.BackColor = bg; this.ClientSize = new System.Drawing.Size(1280, 760); this.MinimumSize = new System.Drawing.Size(1080, 680);
+            this.Font = font; this.ForeColor = text; this.Name = "Form1"; this.Text = "Cooler Speed Change and Management"; this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Sizable; this.Load += new System.EventHandler(this.Form1_Load);
+
+            this.panel3.BackColor = System.Drawing.Color.FromArgb(17, 29, 49); this.panel3.Dock = System.Windows.Forms.DockStyle.Left; this.panel3.Width = 285; this.panel3.Padding = new System.Windows.Forms.Padding(22, 24, 22, 18); this.panel3.Paint += new System.Windows.Forms.PaintEventHandler(this.panel3_Paint);
+            this.label12.Text = "CONTROLE DO SISTEMA"; this.label12.Font = new System.Drawing.Font("Segoe UI Semibold", 13F); this.label12.ForeColor = accent; this.label12.AutoSize = true; this.label12.Location = new System.Drawing.Point(22, 25);
+            this.xampp.Text = "Cooler"; this.xampp.Font = title; this.xampp.ForeColor = text; this.xampp.AutoSize = true; this.xampp.Location = new System.Drawing.Point(22, 85);
+            this.cmbDispositivos.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList; this.cmbDispositivos.FlatStyle = System.Windows.Forms.FlatStyle.Flat; this.cmbDispositivos.BackColor = surface2; this.cmbDispositivos.ForeColor = text; this.cmbDispositivos.Location = new System.Drawing.Point(22, 116); this.cmbDispositivos.Size = new System.Drawing.Size(241, 31);
+            this.label18.Text = "Potência: 25%"; this.label18.Font = title; this.label18.ForeColor = accent; this.label18.AutoSize = true; this.label18.Location = new System.Drawing.Point(22, 174);
+            this.btnResetar.Text = "Restaurar controle"; this.btnResetar.FlatStyle = System.Windows.Forms.FlatStyle.Flat; this.btnResetar.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(71, 85, 105); this.btnResetar.ForeColor = text; this.btnResetar.BackColor = surface2; this.btnResetar.Location = new System.Drawing.Point(22, 208); this.btnResetar.Size = new System.Drawing.Size(241, 42); this.btnResetar.Click += new System.EventHandler(this.btnResetar_Click);
+            this.button1.Text = "Gerar relatório"; this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat; this.button1.FlatAppearance.BorderColor = accent; this.button1.ForeColor = accent; this.button1.BackColor = System.Drawing.Color.Transparent; this.button1.Location = new System.Drawing.Point(22, 262); this.button1.Size = new System.Drawing.Size(241, 42); this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.radioButton1.Text = "°C"; this.radioButton2.Text = "°F"; this.radioButton3.Text = "K";
+            foreach (var unit in new[] { this.radioButton1, this.radioButton2, this.radioButton3 }) { unit.AutoSize = true; unit.ForeColor = text; unit.BackColor = System.Drawing.Color.Black; unit.FlatStyle = System.Windows.Forms.FlatStyle.Flat; }
+            this.radioButton1.Location = new System.Drawing.Point(22, 315); this.radioButton2.Location = new System.Drawing.Point(90, 315); this.radioButton3.Location = new System.Drawing.Point(158, 315); this.radioButton1.Checked = true;
+            this.radioButton1.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged); this.radioButton2.CheckedChanged += new System.EventHandler(this.radioButton2_CheckedChanged); this.radioButton3.CheckedChanged += new System.EventHandler(this.radioButton3_CheckedChanged);
+            this.panel5.BackColor = surface; this.panel5.Location = new System.Drawing.Point(22, 335); this.panel5.Size = new System.Drawing.Size(241, 92); this.panel5.Padding = new System.Windows.Forms.Padding(12); this.panel5.Controls.Add(this.label19); this.panel5.Controls.Add(this.label20); this.panel5.Controls.Add(this.button2);
+            this.label19.Text = "Idioma"; this.label19.Font = title; this.label19.ForeColor = text; this.label19.AutoSize = true; this.label19.Location = new System.Drawing.Point(12, 10);
+            this.label20.Text = "Português"; this.label20.ForeColor = muted; this.label20.AutoSize = true; this.label20.Location = new System.Drawing.Point(12, 38);
+            this.button2.Text = "Alterar"; this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat; this.button2.FlatAppearance.BorderSize = 0; this.button2.ForeColor = accent; this.button2.BackColor = System.Drawing.Color.Transparent; this.button2.Location = new System.Drawing.Point(145, 26); this.button2.Size = new System.Drawing.Size(82, 32); this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.panel6.BackColor = System.Drawing.Color.FromArgb(22, 36, 59); this.panel6.Dock = System.Windows.Forms.DockStyle.Bottom; this.panel6.Height = 68; this.panel6.Controls.Add(this.dev); this.panel6.Controls.Add(this.button3);
+            this.dev.Text = "Desenvolvido por drJhonatan00"; this.dev.Font = new System.Drawing.Font("Segoe UI", 8.5F); this.dev.ForeColor = muted; this.dev.AutoSize = true; this.dev.Location = new System.Drawing.Point(2, 11);
+            this.button3.Text = "Apoiar o projeto"; this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat; this.button3.FlatAppearance.BorderSize = 0; this.button3.ForeColor = accent; this.button3.BackColor = System.Drawing.Color.Transparent; this.button3.Location = new System.Drawing.Point(0, 32); this.button3.Size = new System.Drawing.Size(130, 28); this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.panel3.Controls.Add(this.label12); this.panel3.Controls.Add(this.xampp); this.panel3.Controls.Add(this.cmbDispositivos); this.panel3.Controls.Add(this.label18); this.panel3.Controls.Add(this.btnResetar); this.panel3.Controls.Add(this.button1); this.panel3.Controls.Add(this.radioButton1); this.panel3.Controls.Add(this.radioButton2); this.panel3.Controls.Add(this.radioButton3); this.panel3.Controls.Add(this.panel5); this.panel3.Controls.Add(this.panel6);
+
+            this.panel1.BackColor = surface; this.panel1.Location = new System.Drawing.Point(320, 28); this.panel1.Size = new System.Drawing.Size(300, 128); this.panel1.Padding = new System.Windows.Forms.Padding(20); this.panel1.Controls.Add(this.label14); this.panel1.Controls.Add(this.lblTemperaturaVal);
+            this.label14.Text = "Temperatura do processador"; this.label14.Font = title; this.label14.ForeColor = muted; this.label14.AutoSize = true; this.label14.Location = new System.Drawing.Point(20, 18);
+            this.lblTemperaturaVal.Text = "--.- °C"; this.lblTemperaturaVal.Font = new System.Drawing.Font("Segoe UI Semibold", 28F); this.lblTemperaturaVal.ForeColor = System.Drawing.Color.FromArgb(251, 146, 60); this.lblTemperaturaVal.AutoSize = true; this.lblTemperaturaVal.Location = new System.Drawing.Point(17, 47);
+            this.panel2.BackColor = surface; this.panel2.Location = new System.Drawing.Point(640, 28); this.panel2.Size = new System.Drawing.Size(400, 128); this.panel2.Padding = new System.Windows.Forms.Padding(20); this.panel2.Controls.Add(this.label15); this.panel2.Controls.Add(this.lblRpm);
+            this.label15.Text = "Velocidade do cooler"; this.label15.Font = title; this.label15.ForeColor = muted; this.label15.AutoSize = true; this.label15.Location = new System.Drawing.Point(20, 18);
+            this.lblRpm.Text = "0 RPM"; this.lblRpm.Font = new System.Drawing.Font("Segoe UI Semibold", 28F); this.lblRpm.ForeColor = accent; this.lblRpm.AutoSize = true; this.lblRpm.Location = new System.Drawing.Point(17, 47);
+
+            this.panel4.BackColor = System.Drawing.Color.Transparent; this.panel4.Location = new System.Drawing.Point(320, 180); this.panel4.Size = new System.Drawing.Size(920, 510);
+            this.chartTemperatura.BackColor = System.Drawing.Color.WhiteSmoke; this.chartTemperatura.Location = new System.Drawing.Point(0, 0); this.chartTemperatura.Size = new System.Drawing.Size(445, 430); this.chartTemperatura.ChartAreas.Add(areaTemp); this.chartTemperatura.Series.Add(seriesTemp); this.chartTemperatura.Legends.Clear(); this.chartTemperatura.BorderlineColor = surface; this.chartTemperatura.BorderlineWidth = 0;
+            this.chartCooler.BackColor = surface; this.chartCooler.Location = new System.Drawing.Point(475, 0); this.chartCooler.Size = new System.Drawing.Size(445, 430); this.chartCooler.ChartAreas.Add(areaFan); this.chartCooler.Series.Add(seriesFan); this.chartCooler.Legends.Clear(); this.chartCooler.BorderlineColor = surface; this.chartCooler.BorderlineWidth = 0;
+            foreach (var chart in new[] { this.chartTemperatura, this.chartCooler }) { chart.ChartAreas[0].BackColor = surface; chart.ChartAreas[0].AxisX.LabelStyle.ForeColor = muted; chart.ChartAreas[0].AxisY.LabelStyle.ForeColor = muted; chart.ChartAreas[0].AxisX.LineColor = System.Drawing.Color.FromArgb(71, 85, 105); chart.ChartAreas[0].AxisY.LineColor = System.Drawing.Color.FromArgb(71, 85, 105); chart.ChartAreas[0].AxisX.MajorGrid.LineColor = System.Drawing.Color.FromArgb(51, 65, 85); chart.ChartAreas[0].AxisY.MajorGrid.LineColor = System.Drawing.Color.FromArgb(51, 65, 85); }
+            seriesTemp.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.FastLine; seriesTemp.Color = System.Drawing.Color.FromArgb(251, 146, 60); seriesTemp.BorderWidth = 3; seriesTemp.ChartArea = "AreaTemp";
+            seriesFan.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.FastLine; seriesFan.Color = accent; seriesFan.BorderWidth = 3; seriesFan.ChartArea = "AreaFan";
+            this.label16.Text = "TEMPERATURA\nDO PROCESSADOR"; this.label16.Font = title; this.label16.ForeColor = muted; this.label16.AutoSize = true; this.label16.Location = new System.Drawing.Point(130, 445); this.label16.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label17.Text = "VELOCIDADE\nDO COOLER"; this.label17.Font = title; this.label17.ForeColor = muted; this.label17.AutoSize = true; this.label17.Location = new System.Drawing.Point(625, 445); this.label17.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.panel4.Controls.Add(this.chartTemperatura); this.panel4.Controls.Add(this.chartCooler); this.panel4.Controls.Add(this.label16); this.panel4.Controls.Add(this.label17);
+
+            this.sliderTemperatura.Minimum = 0; this.sliderTemperatura.Maximum = 100; this.sliderTemperatura.Value = 25; this.sliderTemperatura.TickFrequency = 10; this.sliderTemperatura.Orientation = System.Windows.Forms.Orientation.Vertical; this.sliderTemperatura.Location = new System.Drawing.Point(1200, 28); this.sliderTemperatura.Size = new System.Drawing.Size(45, 128); this.sliderTemperatura.Scroll += new System.EventHandler(this.sliderTemperatura_Scroll); this.sliderTemperatura.ValueChanged += new System.EventHandler(this.SliderTemperatura_ValueChanged);
+            this.label1.Text = "\n\n\n   Power"; this.label1.ForeColor = muted; this.label1.AutoSize = true; this.label1.Location = new System.Drawing.Point(1130, 28);
+            var marks = new[] { this.label2, this.label3, this.label4, this.label5, this.label6, this.label7 }; for (int i = 0; i < marks.Length; i++) { marks[i].ForeColor = muted; marks[i].AutoSize = true; marks[i].Location = new System.Drawing.Point(1000, 52 + i * 21); }
+            this.label8.Visible = false; this.label9.Visible = false; this.label10.Visible = false; this.label11.Visible = false;
+            this.timerAtualizacao.Interval = 1000; this.timerAtualizacao.Tick += new System.EventHandler(this.TimerAtualizacao_Tick); this.timer1.Interval = 10000; this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            this.Controls.Add(this.panel3); this.Controls.Add(this.panel1); this.Controls.Add(this.panel2); this.Controls.Add(this.panel4); this.Controls.Add(this.sliderTemperatura); this.Controls.Add(this.label1); this.Controls.Add(this.label2); this.Controls.Add(this.label3); this.Controls.Add(this.label4); this.Controls.Add(this.label5); this.Controls.Add(this.label6); this.Controls.Add(this.label7);
+            ((System.ComponentModel.ISupportInitialize)(this.chartTemperatura)).EndInit(); ((System.ComponentModel.ISupportInitialize)(this.chartCooler)).EndInit(); ((System.ComponentModel.ISupportInitialize)(this.sliderTemperatura)).EndInit(); this.ResumeLayout(false); this.PerformLayout();
         }
-
-        #endregion
-        private System.Windows.Forms.Label lblTemperaturaVal;
-        private System.Windows.Forms.DataVisualization.Charting.Chart chartTemperatura;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Timer timerAtualizacao;
-        private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.Label lblRpm;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label lblTemperaturaVal, label1, label14, label15, lblRpm, dev, label20, label19, label18, label12, xampp, label16, label17, label2, label3, label4, label5, label6, label7, label8, label9, label10, label11;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chartTemperatura, chartCooler;
+        private System.Windows.Forms.Panel panel1, panel2, panel3, panel4, panel5, panel6;
+        private System.Windows.Forms.Timer timerAtualizacao, timer1;
+        private System.Windows.Forms.Button button1, button2, button3, btnResetar;
         private System.Windows.Forms.ComboBox cmbDispositivos;
-        private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.Label xampp;
-        private System.Windows.Forms.DataVisualization.Charting.Chart chartCooler;
-        private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.Label label17;
         private System.Windows.Forms.TrackBar sliderTemperatura;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Button btnResetar;
-        private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.Label label19;
-        private System.Windows.Forms.Label dev;
-        private System.Windows.Forms.Label label20;
-        private System.Windows.Forms.Panel panel5;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Timer timer1;
-        private System.Windows.Forms.RadioButton radioButton2;
-        private System.Windows.Forms.RadioButton radioButton1;
-        private System.Windows.Forms.RadioButton radioButton3;
-        private System.Windows.Forms.Panel panel6;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.RadioButton radioButton1, radioButton2, radioButton3;
     }
 }
-

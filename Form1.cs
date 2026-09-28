@@ -11,24 +11,42 @@ namespace WindowsFormsApp6
 {
     public partial class Form1 : Form
     {
+        string ac = "C";
         private int tempoDecorridoSegundos = 0;
-        private const int MaxPontosNoGrafico = 30;
+        private const int MaxPontosNoGrafico = 100;
         private Computer pc;
         private bool _estaAtualizando = false;
         string cash = "25";
         string potencia = "";
         int ptg = 0;
-        string cam = @"WindowsForms6.config";
-        string tempet = @"WindowsFormsApp6.pdb.config";
-        
+        string cam = Path.Combine(AppContext.BaseDirectory, "WindowsForms6.config");
+        string tempet = Path.Combine(AppContext.BaseDirectory, "WindowsFormsApp6.pdb.config");
+
         public Form1()
         {
             InitializeComponent();
+            GarantirArquivosDeConfiguracao();
             ConfigurarGrafico();
             ConfigurarGraficoRpm();
             AtualizarLabelRpm();
             InicializarHardware();
             ConfigurarControles();
+        }
+
+        private void GarantirArquivosDeConfiguracao()
+        {
+            try
+            {
+                if (!File.Exists(cam)) File.WriteAllText(cam, "PT");
+                if (!File.Exists(tempet)) File.WriteAllText(tempet, "C");
+            }
+            catch { }
+        }
+
+        private string LerArquivoSeguro(string caminho, string padrao)
+        {
+            try { return File.Exists(caminho) ? File.ReadAllText(caminho).Trim() : padrao; }
+            catch { return padrao; }
         }
 
         private void InicializarHardware()
@@ -53,7 +71,7 @@ namespace WindowsFormsApp6
             {
                 if (hardware.HardwareType == HardwareType.Cpu)
                 {
-                    
+
                     foreach (ISensor sensor in hardware.Sensors)
                     {
                         if (sensor.SensorType == SensorType.Temperature && sensor.Value.HasValue)
@@ -66,7 +84,7 @@ namespace WindowsFormsApp6
                         }
                     }
 
-                    
+
                     foreach (ISensor sensor in hardware.Sensors)
                     {
                         if (sensor.SensorType == SensorType.Temperature && sensor.Value.HasValue)
@@ -97,13 +115,13 @@ namespace WindowsFormsApp6
             {
                 Series serie = chartCooler.Series["LinhaRPM"];
 
-                
+
                 serie.Points.AddXY(tempoAtual, rpmAtual);
 
                 if (serie.Points.Count > MaxPontosNoGrafico)
                 {
                     serie.Points.RemoveAt(0);
-                    
+
                     chartCooler.ChartAreas[0].AxisX.Minimum = tempoAtual - MaxPontosNoGrafico;
                     chartCooler.ChartAreas[0].AxisX.Maximum = tempoAtual;
                 }
@@ -114,7 +132,7 @@ namespace WindowsFormsApp6
                 }
             }
         }
-        
+
 
         private void ConfigurarControles()
         {
@@ -125,20 +143,37 @@ namespace WindowsFormsApp6
 
         private void ConfigurarGrafico()
         {
+
             chartTemperatura.Series.Clear();
             chartTemperatura.ChartAreas.Clear();
 
             ChartArea area = new ChartArea("AreaTemp");
             area.AxisX.Title = "";
             area.AxisY.Title = "";
-            area.AxisY.Minimum = 0;
-            area.AxisY.Maximum = 120;
+
+            if (ac == "C")
+            {
+                area.AxisY.Minimum = 0;
+                area.AxisY.Maximum = 120;
+            }
+            else if (ac == "F")
+            {
+                area.AxisY.Minimum = 32;
+                area.AxisY.Maximum = 248;
+            }
+            else if (ac == "K")
+            {
+                area.AxisY.Minimum = 273.15;
+                area.AxisY.Maximum = 393.15;
+            }
+
             area.AxisX.MajorGrid.LineColor = Color.LightGray;
             area.AxisY.MajorGrid.LineColor = Color.LightGray;
             chartTemperatura.ChartAreas.Add(area);
 
             Series serie = new Series("Temperatura")
             {
+                
                 ChartType = SeriesChartType.FastLine,
                 BorderWidth = 3,
                 Color = Color.Red,
@@ -149,18 +184,18 @@ namespace WindowsFormsApp6
 
         private void SliderTemperatura_ValueChanged(object sender, EventArgs e)
         {
-            
+
         }
 
         private async void TimerAtualizacao_Tick(object sender, EventArgs e)
         {
-            
+
             if (_estaAtualizando) return;
             _estaAtualizando = true;
 
             try
             {
-                
+
                 await Task.Run(() =>
                 {
                     pc.Accept(new UpdateVisitor());
@@ -168,27 +203,33 @@ namespace WindowsFormsApp6
 
                 tempoDecorridoSegundos++;
 
-                
+
                 AplicarControleFan(sliderTemperatura.Value);
 
-                
+
                 float tempReal = ObterTemperaturaUniversal();
-                if (radioButton1.Checked) { 
-                lblTemperaturaVal.Text = $"{tempReal:F1} °C";
+                double tempExibicao = tempReal;
+                if (radioButton1.Checked)
+                {
+                    lblTemperaturaVal.Text = $"{tempReal:F1} °C";
+                    tempExibicao = tempReal;
                 }
                 else if (radioButton2.Checked)
                 {
+                    tempExibicao = (tempReal * 1.8) + 32;
                     double tempF = (tempReal * 1.8) + 32;
                     lblTemperaturaVal.Text = $"{tempF:F1} °F";
+
                 }
                 else if (radioButton3.Checked)
                 {
+                    tempExibicao = tempReal + 273.15;
                     double tempK = tempReal + 273.15;
                     lblTemperaturaVal.Text = $"{tempK:F1} °K";
                 }
 
-                    var serieTemp = chartTemperatura.Series["Temperatura"];
-                serieTemp.Points.AddXY(tempoDecorridoSegundos, tempReal);
+                var serieTemp = chartTemperatura.Series["Temperatura"];
+                serieTemp.Points.AddXY(tempoDecorridoSegundos, tempExibicao);
 
                 if (serieTemp.Points.Count > MaxPontosNoGrafico)
                 {
@@ -197,13 +238,13 @@ namespace WindowsFormsApp6
                     chartTemperatura.ChartAreas[0].AxisX.Maximum = tempoDecorridoSegundos;
                 }
 
-                
+
                 AtualizarLabelRpm();
                 AtualizarExibicaoRpm(tempoDecorridoSegundos);
             }
             catch
             {
-                
+
             }
             finally
             {
@@ -213,37 +254,43 @@ namespace WindowsFormsApp6
 
         private void AplicarControleFan(int porcentagem)
         {
-           
+
             if (cmbDispositivos.SelectedItem is ItemControleFan dispositivoSelecionado)
             {
-                
+
                 dispositivoSelecionado.SensorControle.Control?.SetSoftware(porcentagem);
             }
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            string tem = File.ReadAllText(tempet);
+            string tem = LerArquivoSeguro(tempet, "C");
             if (tem == "C")
             {
                 radioButton1.Checked = true;
                 radioButton2.Checked = false;
                 radioButton3.Checked = false;
+                ac = "C";
+                ConfigurarGrafico();
             }
             else if (tem == "F")
             {
                 radioButton1.Checked = false;
                 radioButton2.Checked = true;
                 radioButton3.Checked = false;
+                ac = "F";
+                ConfigurarGrafico();
             }
             else if (tem == "K")
             {
                 radioButton1.Checked = false;
                 radioButton2.Checked = false;
                 radioButton3.Checked = true;
+                ac = "K";
+                ConfigurarGrafico();
             }
-            string data = File.ReadAllText(cam);
-            if(data == "EN")
+            string data = LerArquivoSeguro(cam, "PT");
+            if (data == "EN")
             {
                 potencia = "Power: ";
                 dev.Text = "Developed by Dr. Jhonatan";
@@ -282,7 +329,7 @@ namespace WindowsFormsApp6
                 potencia = "힘 ";
                 dev.Text = "조나단 박사가 개발했습니다.";
                 label19.Text = "언어";
-                label20.Text = "한국인";
+                label20.Text = "한국어";
                 button1.Text = "세부";
                 btnResetar.Text = "CPU로 제어권을 반환합니다.";
                 label15.Text = "냉각 속도";
@@ -370,10 +417,10 @@ namespace WindowsFormsApp6
                 label20.Text = "Français";
                 button1.Text = "Rapport";
                 btnResetar.Text = "Contrôle du Processeur";
-                label15.Text = "Vietesse du Refroidisseur";
-                label14.Text = "Température Actualle";
+                label15.Text = "Vitesse du refroidisseur";
+                label14.Text = "Température actuelle";
                 label16.Text = "Température\nActualle";
-                label17.Text = "Vietesse du\nRefroidisseur";
+                label17.Text = "Vitesse du\nrefroidisseur";
                 label12.Text = "Paramètres";
                 button2.Text = "Changer de Langue";
                 label18.Text = potencia + cash + "%";
@@ -388,7 +435,7 @@ namespace WindowsFormsApp6
                 button1.Text = "Relatório";
                 btnResetar.Text = "Restaurar";
                 label15.Text = "Velocidade Cooler";
-                label14.Text = "Temperatura Atual";
+                label14.Text = "Temperatura atual";
                 label16.Text = "Temperatura\nAtual";
                 label17.Text = "Velocidade\nCooler";
                 label12.Text = "Configurações";
@@ -400,7 +447,7 @@ namespace WindowsFormsApp6
 
         protected override void OnFormClosed(FormClosedEventArgs e)
         {
-            
+            if (pc == null) { base.OnFormClosed(e); return; }
             foreach (IHardware hardware in pc.Hardware)
             {
                 foreach (ISensor sensor in hardware.Sensors)
@@ -419,17 +466,17 @@ namespace WindowsFormsApp6
 
             Series serieCooler = chartCooler.Series.Add("LinhaRPM");
             serieCooler.ChartType = SeriesChartType.FastLine;
-            serieCooler.Color = Color.BlueViolet; 
+            serieCooler.Color = Color.BlueViolet;
             serieCooler.BorderWidth = 2;
 
-            
+
             ChartArea area = chartCooler.ChartAreas[0];
             area.AxisY.Minimum = 0;
             area.AxisY.Maximum = 2500;
         }
-        private void sliderTemperatura_Scroll(object sender, EventArgs e) 
+        private void sliderTemperatura_Scroll(object sender, EventArgs e)
         {
-            string data = File.ReadAllText(cam);
+            string data = LerArquivoSeguro(cam, "PT");
             if (sliderTemperatura.Value == 20)
             {
 
@@ -482,14 +529,14 @@ namespace WindowsFormsApp6
             ptg = sliderTemperatura.Value;
             cash = ptg.ToString();
             label18.Text = potencia + cash + "%";
-        
+
         }
 
         private float ObterRpmFan()
         {
             foreach (IHardware hw in pc.Hardware)
             {
-                
+
                 foreach (ISensor s in hw.Sensors)
                 {
                     if (s.SensorType == SensorType.Fan && s.Value.HasValue && s.Value.Value > 0)
@@ -498,7 +545,7 @@ namespace WindowsFormsApp6
                     }
                 }
 
-                
+
                 foreach (IHardware subHw in hw.SubHardware)
                 {
                     foreach (ISensor s in subHw.Sensors)
@@ -515,7 +562,7 @@ namespace WindowsFormsApp6
 
         private void button1_Click(object sender, EventArgs e)
         {
-            string data = File.ReadAllText(cam);
+            string data = LerArquivoSeguro(cam, "PT");
             var relatorio = new System.Text.StringBuilder();
 
             if (data == "EN")
@@ -561,7 +608,7 @@ namespace WindowsFormsApp6
                 hw.Update();
                 relatorio.AppendLine($"[ {hw.Name} ] ({hw.HardwareType})");
 
-                
+
                 var sensoresAgrupados = hw.Sensors.GroupBy(s => s.SensorType);
 
                 foreach (var grupo in sensoresAgrupados)
@@ -576,7 +623,7 @@ namespace WindowsFormsApp6
                     }
                 }
 
-                
+
                 foreach (IHardware subHw in hw.SubHardware)
                 {
                     subHw.Update();
@@ -594,7 +641,7 @@ namespace WindowsFormsApp6
                 relatorio.AppendLine(new string('-', 40));
             }
 
-            
+
             ExibirJanelaLog(relatorio.ToString());
         }
         private void ExibirJanelaLog(string textoLog)
@@ -613,7 +660,7 @@ namespace WindowsFormsApp6
                 ScrollBars = ScrollBars.Vertical,
                 Dock = DockStyle.Fill,
                 Text = textoLog,
-                Font = new Font("Consolas", 10) 
+                Font = new Font("Consolas", 10)
             };
 
             formLog.Controls.Add(txtLog);
@@ -623,7 +670,7 @@ namespace WindowsFormsApp6
         {
             if (cmbDispositivos.SelectedItem is ItemControleFan dispositivoSelecionado)
             {
-                
+
                 if (dispositivoSelecionado.SensorRpm != null && dispositivoSelecionado.SensorRpm.Value.HasValue)
                 {
                     lblRpm.Text = $"{dispositivoSelecionado.SensorRpm.Name}: {dispositivoSelecionado.SensorRpm.Value.Value:F0} RPM";
@@ -639,13 +686,13 @@ namespace WindowsFormsApp6
 
             foreach (IHardware hardware in pc.Hardware)
             {
-                
+
                 var controles = hardware.Sensors.Where(s => s.SensorType == SensorType.Control).ToList();
                 var leitoresRpm = hardware.Sensors.Where(s => s.SensorType == SensorType.Fan).ToList();
 
                 for (int i = 0; i < controles.Count; i++)
                 {
-                    
+
                     ISensor sensorRpmCorrespondente = (i < leitoresRpm.Count) ? leitoresRpm[i] : null;
 
                     cmbDispositivos.Items.Add(new ItemControleFan
@@ -671,66 +718,66 @@ namespace WindowsFormsApp6
 
         private void btnResetar_Click(object sender, EventArgs e)
         {
-            string data = File.ReadAllText(cam);
+            string data = LerArquivoSeguro(cam, "PT");
             foreach (var hw in pc.Hardware)
-    {
+            {
                 foreach (var s in hw.Sensors.Where(x => x.SensorType == SensorType.Control))
                 {
-                    s.Control?.SetDefault(); 
+                    s.Control?.SetDefault();
                 }
             }
             sliderTemperatura.Value = 25;
             if (data == "EN")
             {
                 MessageBox.Show("Control returned to BIOS", "Warning");
-                
+
             }
             else if (data == "ES")
             {
                 MessageBox.Show("El control volvió a la BIOS", "Aviso");
-                
+
             }
             else if (data == "KO")
             {
                 MessageBox.Show("제어권이 BIOS로 돌아왔습니다.", "알아채다");
-                
+
             }
             else if (data == "JA")
             {
                 MessageBox.Show("制御はBIOSに戻った", "知らせ");
-                
+
             }
             else if (data == "DE")
             {
                 MessageBox.Show("Die Kontrolle wurde an das BIOS zurückgegeben.", "Beachten");
-                
+
             }
             else if (data == "ITA")
             {
                 MessageBox.Show("Controllo ripristinato al BIOS", "Avviso");
-                
+
             }
             else if (data == "FR")
             {
                 MessageBox.Show("Le contrôle a été rendu au BIOS.", "Avis");
-                
+
             }
             else if (data == "CH")
             {
                 MessageBox.Show("控制权已返回BIOS", "注意");
-                
+
             }
             else if (data == "PT")
             {
                 MessageBox.Show("Controle devolvido para BIOS", "Aviso");
-                
+
             }
         }
 
         private void label19_Click(object sender, EventArgs e)
         {
             this.Hide();
-           Form2 form = new Form2();
+            Form2 form = new Form2();
             form.ShowDialog();
             this.Close();
         }
@@ -750,7 +797,7 @@ namespace WindowsFormsApp6
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            string data = File.ReadAllText(cam);
+            string data = LerArquivoSeguro(cam, "PT");
             if (lblRpm.Text == "Cooler: 0 RPM")
             {
                 if (data == "EN")
@@ -799,7 +846,7 @@ namespace WindowsFormsApp6
                     timer1.Stop();
                 }
                 else { timer1.Stop(); }
-                    
+
             }
             else
             {
@@ -811,8 +858,10 @@ namespace WindowsFormsApp6
         {
             File.WriteAllText(tempet, "F");
             float tempReal = ObterTemperaturaUniversal();
-            double tempF = (tempReal * 1.8) + 32; 
+            double tempF = (tempReal * 1.8) + 32;
             lblTemperaturaVal.Text = $"{tempF:F1} °F";
+            ac = "F";
+            ConfigurarGrafico();
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -824,11 +873,15 @@ namespace WindowsFormsApp6
         private void radioButton1_CheckedChanged(object sender, EventArgs e)
         {
             File.WriteAllText(tempet, "C");
+            ac = "C";
+            ConfigurarGrafico();
         }
 
         private void radioButton3_CheckedChanged(object sender, EventArgs e)
         {
             File.WriteAllText(tempet, "K");
+            ac = "K";
+            ConfigurarGrafico();
         }
     }
     public class UpdateVisitor : IVisitor
@@ -846,8 +899,8 @@ namespace WindowsFormsApp6
     {
         public string NomeExibicao { get; set; }
         public IHardware HardwarePai { get; set; }
-        public ISensor SensorControle { get; set; } 
-        public ISensor SensorRpm { get; set; }      
+        public ISensor SensorControle { get; set; }
+        public ISensor SensorRpm { get; set; }
 
         public override string ToString()
         {
