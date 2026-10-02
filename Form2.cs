@@ -99,5 +99,28 @@ namespace WindowsFormsApp6
             form.ShowDialog();
             this.Close();
         }
+
+        private void tsuno_o_magaru(object sender, PaintEventArgs e)
+        {
+            Panel pn1 = (Panel)sender;
+            int kyokuritsu = 5;
+            int d = kyokuritsu * 2;
+
+            e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+
+            using (System.Drawing.Drawing2D.GraphicsPath shiawase = new System.Drawing.Drawing2D.GraphicsPath())
+            {
+                shiawase.AddArc(0, 0, d, d, 180, 90);
+                shiawase.AddArc(pn1.Width - d - 1, 0, d, d, 270, 90);
+                shiawase.AddArc(pn1.Width - d - 1, pn1.Height - d - 1, d, d, 0, 90);
+                shiawase.AddArc(0, pn1.Height - d - 1, d, d, 90, 90);
+                shiawase.CloseAllFigures();
+
+                pn1.Region = new Region(shiawase);
+            }
+        }
     }
 }
+
+
+//Watashi wa watashi sore dake
