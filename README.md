@@ -43,7 +43,7 @@ A high-performance C#/.NET Windows Forms application designed for real-time hard
 * Français
 * 简体中文
 
-<img width="263" height="399" alt="Imagem14" src="https://github.com/user-attachments/assets/29c458f4-9979-43b4-94b6-86810d8f4052" />
+<img width="298" height="515" alt="1000042435" src="https://github.com/user-attachments/assets/cea3f0b6-f7f8-4ca3-9d76-76e5d4588b3b" />
 
 
 ---
